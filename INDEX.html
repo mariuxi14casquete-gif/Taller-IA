@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de Solicitudes Internas</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="brand" id="brandContainer">
+      <img src="logo.png" alt="Logo del Portal de Solicitudes Internas" class="brand__logo" id="logoPortal">
+      <div class="brand__text">
+        <h1 id="tituloPortal">Portal de Solicitudes Internas</h1>
+        <p id="subtituloPortal">Gestión educativa de solicitudes internas</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-main" id="contenidoPrincipal">
+    <section class="login-section" id="seccionLogin" aria-labelledby="tituloLogin">
+      <div class="card login-card">
+        <h2 id="tituloLogin">Ingreso al portal</h2>
+        <p id="descripcionLogin">Ingresa tu correo y PIN para acceder al formulario de solicitudes.</p>
+
+        <form id="formLogin" autocomplete="off">
+          <div class="form-group">
+            <label for="correoLogin">Correo</label>
+            <input
+              type="email"
+              id="correoLogin"
+              name="correo"
+              placeholder="usuario@empresa.com"
+              autocomplete="username"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="pinLogin">PIN</label>
+            <input
+              type="password"
+              id="pinLogin"
+              name="pin"
+              placeholder="Ingresa tu PIN"
+              autocomplete="current-password"
+              required
+            >
+          </div>
+
+          <button type="submit" id="btnLogin">Ingresar</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="app-section" id="seccionApp" aria-labelledby="tituloAreaPrincipal" hidden>
+      <div class="app-header" id="encabezadoApp">
+        <div>
+          <h2 id="tituloAreaPrincipal">Panel de solicitudes</h2>
+          <p id="descripcionAreaPrincipal">Registra y consulta tus solicitudes internas.</p>
+        </div>
+
+        <div class="user-summary" id="resumenUsuario" aria-label="Información del usuario autenticado">
+          <p><strong>Usuario:</strong> <span id="nombreUsuario"></span></p>
+          <p><strong>Correo:</strong> <span id="correoUsuario"></span></p>
+        </div>
+
+        <div class="app-actions" id="accionesApp">
+          <button type="button" id="btnActualizar">Actualizar</button>
+          <button type="button" id="btnImprimir">Imprimir/Guardar PDF</button>
+          <button type="button" id="btnCerrarSesion">Cerrar sesión</button>
+        </div>
+      </div>
+
+      <section class="request-section" id="seccionFormularioSolicitud" aria-labelledby="tituloFormularioSolicitud">
+        <div class="card">
+          <h3 id="tituloFormularioSolicitud">Nueva solicitud</h3>
+
+          <form id="formSolicitud" autocomplete="off">
+            <div class="form-group">
+              <label for="tipoSolicitud">Tipo de solicitud</label>
+              <select id="tipoSolicitud" name="tipoSolicitud" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Soporte">Soporte</option>
+                <option value="Mejora">Mejora</option>
+                <option value="Consulta">Consulta</option>
+                <option value="Requerimiento">Requerimiento</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="titulo">Título</label>
+              <input
+                type="text"
+                id="titulo"
+                name="titulo"
+                placeholder="Describe brevemente la solicitud"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="descripcion">Descripción</label>
+              <textarea
+                id="descripcion"
+                name="descripcion"
+                rows="5"
+                placeholder="Detalla la solicitud"
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="prioridad">Prioridad</label>
+              <select id="prioridad" name="prioridad" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Baja">Baja</option>
+                <option value="Media">Media</option>
+                <option value="Alta">Alta</option>
+              </select>
+            </div>
+
+            <button type="submit" id="btnGuardarSolicitud">Guardar solicitud</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="query-section" id="seccionConsultaSolicitudes" aria-labelledby="tituloConsultaSolicitudes">
+        <div class="card">
+          <h3 id="tituloConsultaSolicitudes">Mis solicitudes</h3>
+
+          <div class="table-wrapper" id="contenedorTablaSolicitudes">
+            <table id="tablaSolicitudes">
+              <caption>Listado de solicitudes registradas por el usuario autenticado</caption>
+              <thead>
+                <tr>
+                  <th scope="col">idSolicitud</th>
+                  <th scope="col">fechaRegistro</th>
+                  <th scope="col">tipoSolicitud</th>
+                  <th scope="col">titulo</th>
+                  <th scope="col">descripcion</th>
+                  <th scope="col">prioridad</th>
+                  <th scope="col">estado</th>
+                </tr>
+              </thead>
+              <tbody id="tbodySolicitudes">
+                <tr id="filaSinSolicitudes">
+                  <td colspan="7">No existen solicitudes registradas.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="messages-section" id="seccionMensajes" aria-label="Mensajes del sistema">
+      <p id="mensajeCarga" role="status" aria-live="polite" hidden>Cargando información...</p>
+      <p id="mensajeExito" role="status" aria-live="polite" hidden>Operación realizada correctamente.</p>
+      <p id="mensajeError" role="alert" hidden>No fue posible completar la operación.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="piePagina">
+    <p id="textoPiePagina">Portal educativo de solicitudes internas. Login demostrativo, no productivo.</p>
+  </footer>
+</body>
+</html>

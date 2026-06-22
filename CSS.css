@@ -1,0 +1,706 @@
+:root {
+  --color-principal: #003b71;
+  --color-principal-oscuro: #002b52;
+  --color-principal-suave: #e8f1fa;
+  --color-secundario: #1f8f4d;
+  --color-secundario-oscuro: #176b3a;
+  --color-fondo: #f4f7fb;
+  --color-tarjeta: #ffffff;
+  --color-texto: #1f2933;
+  --color-texto-suave: #5b6673;
+  --color-borde: #d9e2ec;
+  --color-error: #b42318;
+  --color-error-fondo: #fdecea;
+  --color-exito: #176b3a;
+  --color-exito-fondo: #e8f7ee;
+  --color-carga: #003b71;
+  --color-carga-fondo: #e8f1fa;
+  --sombra-tarjeta: 0 8px 22px rgba(0, 43, 82, 0.08);
+  --radio: 14px;
+  --radio-sm: 8px;
+  --ancho-maximo: 1180px;
+  --transicion: 180ms ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--color-texto);
+  background: linear-gradient(180deg, var(--color-principal-suave) 0%, var(--color-fondo) 42%, #ffffff 100%);
+  line-height: 1.45;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(31, 143, 77, 0.35);
+  outline-offset: 2px;
+}
+
+.site-header {
+  background: var(--color-principal);
+  color: #ffffff;
+  border-bottom: 5px solid var(--color-secundario);
+}
+
+.brand {
+  width: min(100% - 32px, var(--ancho-maximo));
+  margin: 0 auto;
+  padding: 18px 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand__logo {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 6px;
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#tituloPortal {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+#subtituloPortal {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 0.94rem;
+}
+
+.site-main {
+  width: min(100% - 32px, var(--ancho-maximo));
+  margin: 22px auto 28px;
+}
+
+.card {
+  background: var(--color-tarjeta);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-tarjeta);
+  padding: 20px;
+}
+
+.login-section {
+  min-height: calc(100vh - 220px);
+  display: grid;
+  place-items: center;
+  padding: 20px 0;
+}
+
+.login-card {
+  width: min(100%, 430px);
+}
+
+#tituloLogin,
+#tituloAreaPrincipal,
+#tituloFormularioSolicitud,
+#tituloConsultaSolicitudes {
+  margin: 0;
+  color: var(--color-principal);
+  letter-spacing: -0.01em;
+}
+
+#tituloLogin {
+  font-size: 1.45rem;
+}
+
+#descripcionLogin,
+#descripcionAreaPrincipal {
+  margin: 6px 0 0;
+  color: var(--color-texto-suave);
+}
+
+#formLogin,
+#formSolicitud {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.form-group {
+  display: grid;
+  gap: 6px;
+}
+
+.form-group label {
+  font-weight: 700;
+  color: var(--color-principal-oscuro);
+  font-size: 0.92rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-sm);
+  background: #ffffff;
+  color: var(--color-texto);
+  padding: 10px 12px;
+  min-height: 42px;
+  transition: border-color var(--transicion), box-shadow var(--transicion), background-color var(--transicion);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 112px;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: rgba(0, 59, 113, 0.45);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 0 4px rgba(31, 143, 77, 0.12);
+  outline: none;
+}
+
+#btnLogin,
+#btnGuardarSolicitud,
+#btnActualizar,
+#btnImprimir,
+#btnCerrarSesion {
+  min-height: 40px;
+  border-radius: var(--radio-sm);
+  padding: 10px 14px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  transition: transform var(--transicion), box-shadow var(--transicion), background-color var(--transicion);
+}
+
+#btnLogin,
+#btnGuardarSolicitud {
+  background: var(--color-principal);
+  color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 59, 113, 0.18);
+}
+
+#btnLogin:hover,
+#btnGuardarSolicitud:hover {
+  background: var(--color-principal-oscuro);
+  transform: translateY(-1px);
+}
+
+#btnActualizar {
+  background: var(--color-secundario);
+  color: #ffffff;
+}
+
+#btnActualizar:hover {
+  background: var(--color-secundario-oscuro);
+  transform: translateY(-1px);
+}
+
+#btnImprimir {
+  background: var(--color-principal-suave);
+  color: var(--color-principal);
+  border: 1px solid rgba(0, 59, 113, 0.18);
+}
+
+#btnImprimir:hover {
+  background: #dcecf9;
+  transform: translateY(-1px);
+}
+
+#btnCerrarSesion {
+  background: #ffffff;
+  color: var(--color-error);
+  border: 1px solid rgba(180, 35, 24, 0.24);
+}
+
+#btnCerrarSesion:hover {
+  background: var(--color-error-fondo);
+  transform: translateY(-1px);
+}
+
+.app-section {
+  display: grid;
+  gap: 18px;
+}
+
+.app-header {
+  background: #ffffff;
+  border: 1px solid var(--color-borde);
+  border-left: 6px solid var(--color-secundario);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra-tarjeta);
+  padding: 18px;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-summary {
+  background: var(--color-principal-suave);
+  border: 1px solid rgba(0, 59, 113, 0.14);
+  border-radius: var(--radio-sm);
+  padding: 10px 12px;
+  min-width: 230px;
+}
+
+.user-summary p {
+  margin: 0;
+  color: var(--color-texto);
+  font-size: 0.9rem;
+}
+
+.user-summary p + p {
+  margin-top: 4px;
+}
+
+.user-summary strong {
+  color: var(--color-principal);
+}
+
+.app-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.request-section,
+.query-section {
+  display: block;
+}
+
+#tituloFormularioSolicitud,
+#tituloConsultaSolicitudes {
+  font-size: 1.18rem;
+}
+
+#formSolicitud {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#formSolicitud .form-group:nth-child(3) {
+  grid-column: 1 / -1;
+}
+
+#btnGuardarSolicitud {
+  justify-self: start;
+  grid-column: 1 / -1;
+}
+
+.table-wrapper {
+  width: 100%;
+  margin-top: 14px;
+  overflow-x: auto;
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-sm);
+}
+
+#tablaSolicitudes {
+  width: 100%;
+  min-width: 860px;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+#tablaSolicitudes caption {
+  padding: 10px 12px;
+  text-align: left;
+  color: var(--color-texto-suave);
+  font-size: 0.9rem;
+  background: #ffffff;
+}
+
+#tablaSolicitudes th,
+#tablaSolicitudes td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--color-borde);
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.9rem;
+}
+
+#tablaSolicitudes th {
+  background: var(--color-principal);
+  color: #ffffff;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+#tablaSolicitudes tbody tr:nth-child(even) {
+  background: #f8fbfe;
+}
+
+#tablaSolicitudes tbody tr:hover {
+  background: var(--color-principal-suave);
+}
+
+#tablaSolicitudes td {
+  color: var(--color-texto);
+}
+
+#filaSinSolicitudes td {
+  text-align: center;
+  color: var(--color-texto-suave);
+  font-weight: 700;
+  padding: 18px 12px;
+}
+
+.messages-section {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 50;
+  width: min(360px, calc(100% - 36px));
+  display: grid;
+  gap: 8px;
+  pointer-events: none;
+}
+
+#mensajeCarga,
+#mensajeExito,
+#mensajeError {
+  margin: 0;
+  border-radius: var(--radio-sm);
+  padding: 12px 14px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
+  font-weight: 700;
+  border: 1px solid transparent;
+}
+
+#mensajeCarga {
+  color: var(--color-carga);
+  background: var(--color-carga-fondo);
+  border-color: rgba(0, 59, 113, 0.18);
+}
+
+#mensajeCarga::before {
+  content: "";
+  display: inline-block;
+  width: 0.82em;
+  height: 0.82em;
+  margin-right: 8px;
+  border: 2px solid rgba(0, 59, 113, 0.22);
+  border-top-color: var(--color-carga);
+  border-radius: 50%;
+  vertical-align: -0.12em;
+  animation: giroCarga 800ms linear infinite;
+}
+
+#mensajeExito {
+  color: var(--color-exito);
+  background: var(--color-exito-fondo);
+  border-color: rgba(31, 143, 77, 0.22);
+}
+
+#mensajeError {
+  color: var(--color-error);
+  background: var(--color-error-fondo);
+  border-color: rgba(180, 35, 24, 0.22);
+}
+
+.site-footer {
+  width: min(100% - 32px, var(--ancho-maximo));
+  margin: 0 auto;
+  padding: 14px 0 24px;
+  color: var(--color-texto-suave);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+#textoPiePagina {
+  margin: 0;
+}
+
+@keyframes giroCarga {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .app-header {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .user-summary {
+    min-width: 0;
+  }
+
+  .app-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 680px) {
+  .brand {
+    width: min(100% - 24px, var(--ancho-maximo));
+    padding: 14px 0;
+    align-items: flex-start;
+  }
+
+  .brand__logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .site-main {
+    width: min(100% - 24px, var(--ancho-maximo));
+    margin-top: 16px;
+  }
+
+  .card,
+  .app-header {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  #formSolicitud {
+    grid-template-columns: 1fr;
+  }
+
+  #btnGuardarSolicitud,
+  #btnLogin,
+  #btnActualizar,
+  #btnImprimir,
+  #btnCerrarSesion {
+    width: 100%;
+  }
+
+  .app-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .messages-section {
+    right: 12px;
+    bottom: 12px;
+    width: calc(100% - 24px);
+  }
+}
+
+@media (max-width: 420px) {
+  html {
+    font-size: 15px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  #subtituloPortal,
+  #descripcionLogin,
+  #descripcionAreaPrincipal {
+    font-size: 0.88rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 9px 10px;
+  }
+}
+
+@media print {
+  :root {
+    --color-texto: #000000;
+    --color-borde: #b8b8b8;
+  }
+
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  body {
+    font-size: 11pt;
+  }
+
+  .site-header,
+  .site-footer,
+  #seccionLogin,
+  #accionesApp,
+  #seccionMensajes,
+  #btnActualizar,
+  #btnImprimir,
+  #btnCerrarSesion,
+  #btnGuardarSolicitud {
+    display: none !important;
+  }
+
+  .site-main {
+    width: 100%;
+    margin: 0;
+  }
+
+  .app-section,
+  #seccionApp {
+    display: block !important;
+  }
+
+  .app-header,
+  .card {
+    border: 1px solid #b8b8b8;
+    border-radius: 0;
+    padding: 10px;
+    margin-bottom: 12px;
+    background: #ffffff !important;
+  }
+
+  .app-header {
+    display: block;
+    border-left: 0;
+  }
+
+  #tituloAreaPrincipal,
+  #tituloFormularioSolicitud,
+  #tituloConsultaSolicitudes {
+    color: #000000 !important;
+  }
+
+  .user-summary {
+    margin-top: 8px;
+    padding: 8px;
+    border: 1px solid #b8b8b8;
+    background: #ffffff !important;
+  }
+
+  #seccionFormularioSolicitud {
+    page-break-after: avoid;
+  }
+
+  #formSolicitud {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  #formSolicitud .form-group:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .form-group label {
+    color: #000000 !important;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    border: 1px solid #b8b8b8;
+    border-radius: 0;
+    min-height: auto;
+    padding: 6px;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .form-group textarea {
+    min-height: 70px;
+  }
+
+  .table-wrapper {
+    overflow: visible;
+    border: 0;
+  }
+
+  #tablaSolicitudes {
+    min-width: 0;
+    width: 100%;
+    border-collapse: collapse;
+    page-break-inside: auto;
+  }
+
+  #tablaSolicitudes caption {
+    color: #000000;
+    padding: 6px 0;
+    background: #ffffff !important;
+  }
+
+  #tablaSolicitudes thead {
+    display: table-header-group;
+  }
+
+  #tablaSolicitudes tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  #tablaSolicitudes th,
+  #tablaSolicitudes td {
+    border: 1px solid #b8b8b8;
+    padding: 6px;
+    color: #000000 !important;
+    background: #ffffff !important;
+    font-size: 9pt;
+  }
+
+  #tablaSolicitudes th {
+    font-weight: 700;
+  }
+
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+}
