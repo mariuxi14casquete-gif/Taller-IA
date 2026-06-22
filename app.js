@@ -1,4 +1,4 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbx9pXIjVPWG7tZQ9CKmCk1gmkIrLUeOx0gW80tB58uPsWp3SYXSX5zL-olAFEKzJ2k-/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzayA-sdxq2n5ZD3dc8KPXeU6ONXuk0Vwbte_bbGFQ0cAmuJOv7zOWyun9mu24p96Q/exec";
 
 const STORAGE_KEY = "portalSolicitudesUsuario";
 
