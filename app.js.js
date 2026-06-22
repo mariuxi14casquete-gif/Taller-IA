@@ -1,4 +1,4 @@
-const API_URL = "PEGAR_AQUI_LA_URL_DE_APPS_SCRIPT";
+const API_URL = "https://script.google.com/macros/s/AKfycbx9pXIjVPWG7tZQ9CKmCk1gmkIrLUeOx0gW80tB58uPsWp3SYXSX5zL-olAFEKzJ2k-/exec";
 
 const STORAGE_KEY = "portalSolicitudesUsuario";
 
